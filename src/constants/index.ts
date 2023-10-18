@@ -1,5 +1,10 @@
 import { Question } from "@/types";
 
+export const BASE_OPTION_STYLE = "flex flex-row bg-neutral-900 border-2 border-transparent h-12 items-center rounded"
+export const SELECTED_OPTION_STYLE = "flex flex-row bg-neutral-900 border-2 border-blue-500 h-12 items-center rounded"
+export const CORRECT_OPTION_STYLE = "flex flex-row bg-green-800 border-2 border-transparent h-12 items-center rounded"
+export const WRONG_QUESTION_STYLE = "flex flex-row bg-red-800 border-2 border-transparent h-12 items-center rounded"
+
 export const questions = [
   {
     title: 'Pergunta 1',
