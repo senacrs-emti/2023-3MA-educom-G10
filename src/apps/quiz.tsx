@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BASE_OPTION_STYLE, SELECTED_OPTION_STYLE, questions } from "../constants";
 import { Pressable, SafeAreaView, Text, View, getAlphabetLetterByIndex } from "../utils";
 import EndQuiz from './end-quiz';
+import { Question } from '@/components/question';
 
 export default function () {
   const [questionId, setQuestionId] = useState(0)
@@ -47,12 +48,13 @@ export default function () {
 
         <View className="flex flex-col gap-1">
           {questions[questionId].options.map((question, optionId) => (
-            <Pressable key={question.label + optionId} onPress={() => handleSelectOption(optionId)} className={selectedOption === optionId ? SELECTED_OPTION_STYLE : BASE_OPTION_STYLE}>
-              <View className="bg-neutral-800 h-full w-12 flex items-center justify-center text-center">
-                <Text className="text-white uppercase">{getAlphabetLetterByIndex(optionId)}</Text>
-              </View>
-              <Text className="px-4 text-white">{question.label}</Text>
-            </Pressable>
+            <Question 
+              key={`${question.label}-${questionId}`}
+              optionId={optionId}
+              question={question}
+              selectedOption={selectedOption}
+              onSelectOption={handleSelectOption} 
+            />
           ))}
 
           <Pressable onPress={handleNextQuestion} className='self-end pt-4'>
